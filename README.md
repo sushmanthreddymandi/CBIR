@@ -9,10 +9,9 @@ numpy
 scikit-image
 imutils
 
-<b>Done by:<b>
+<b>Done by:</b>
 Kuldeep Singh(MIT2020044),Mandi Sushmanth Reddy(MIT2020061),Subinoy Manna(MIT2020070),Abhinav Singh(MIT2020072)
 <br/>M.Tech-2020, IIIT Allahabad
 
 <b>Guided by:</b>
-Prof. Uma Shankar Tiwary
-Dr. Anjali Gautam
+Prof. Uma Shankar Tiwary,Dr. Anjali Gautam
