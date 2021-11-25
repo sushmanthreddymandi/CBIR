@@ -6,7 +6,7 @@ class ColorDescriptor:
     def __init__(self, bins):
         self.bins = bins
         
-    def describe(self, image):
+    def describe(self, image, i=2):
         image = image.astype('uint8')
         image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         features = []
@@ -20,14 +20,16 @@ class ColorDescriptor:
             cornerMask = np.zeros(image.shape[:2], dtype="uint8")
             cv2.rectangle(cornerMask, (startX, startY), (endX, endY), 255 ,-1)
             cornerMask = cv2.subtract(cornerMask, ellipMask)
-            cv2.imshow("Myimg",cornerMask)
-            cv2.waitKey(0)
-            cv2.destroyAllWindows()
+            if i==1:
+                cv2.imshow("Myimg",cornerMask)
+                cv2.waitKey(0)
+                cv2.destroyAllWindows()
             hist = self.hist(image, cornerMask)
             features.extend(hist)
-        cv2.imshow("Myimg",ellipMask)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+        if i==1:
+            cv2.imshow("Myimg",ellipMask)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
         hist = self.hist(image, ellipMask)
         features.extend(hist)
         return features

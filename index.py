@@ -14,13 +14,16 @@ args = vars(argParser .parse_args())
 cd = ColorDescriptor.ColorDescriptor((8,12,13))
 output = open(args["index"],"w")
 
-for imgPath in glob.glob(args["dataset"]+"/*.jpg"):
+i=1
+for imgPath in glob.glob(args["dataset"]+"/*.png"):
     imageUID = imgPath[imgPath.rfind("/")+1:]
     image = cv2.imread(imgPath)
-    features = cd.describe(image)
+    features = cd.describe(image,i)
+    i+=1
     img = io.imread(imgPath)
     features.extend(getTextureFeatures(img_as_ubyte(colorconv.rgb2gray(img))))
     features = [str(f) for f in features]
     output.write("%s,%s\n" % (imageUID, ",".join(features)))
 
+print("Total Images Processed",i)
 output.close()
